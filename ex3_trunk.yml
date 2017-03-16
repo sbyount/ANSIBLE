@@ -1,0 +1,17 @@
+---
+
+# switchport mode:           trunk
+# trunk native VLAN:        VLAN1
+# trunk allowed VLANs:    700, 701, 702
+
+- name: Arista-Ansible Exercise3
+  hosts: arista
+
+  tasks:
+    - name: Setting Ethernet5 to trunk mode, vlan 700, 701 & 702 allowed
+      eos_switchport: name=Ethernet5 mode=trunk trunk_native_vlan=1 trunk_allowed_vlans=700,701,702
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
